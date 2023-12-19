@@ -1,0 +1,2 @@
+# FoodBuddy
+Minor Project Repository
