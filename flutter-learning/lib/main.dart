@@ -21,8 +21,10 @@ import 'package:flutter_application_0/pages/newaddress.dart';
 import 'package:flutter_application_0/pages/newpassword2.dart';
 import 'package:flutter_application_0/pages/newpsuccess.dart';
 import 'package:flutter_application_0/pages/newpsuccess2.dart';
+import 'package:flutter_application_0/pages/offers.dart';
 import 'package:flutter_application_0/pages/pchange.dart';
 import 'package:flutter_application_0/pages/personal.dart';
+import 'package:flutter_application_0/pages/popular.dart';
 import 'package:flutter_application_0/pages/psuccess.dart';
 import 'package:flutter_application_0/pages/pverification.dart';
 import 'package:flutter_application_0/pages/recoveryverification.dart';
@@ -100,6 +102,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.create3Route: (context) => create3(),
         MyRoutes.confirmation2Route: (context) => confirmation2(),
         MyRoutes.Recovery2Route: (context) => Recovery2(),
+        MyRoutes.popularRoute: (context) => popular(),
+        MyRoutes.offersRoute: (context) => offers(),
       },
     );
     return materialApp;

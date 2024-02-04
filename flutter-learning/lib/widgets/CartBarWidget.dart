@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_0/utils/routess.dart';
 
 class CartBarWidget extends StatelessWidget {
   const CartBarWidget({super.key});
@@ -14,7 +13,9 @@ class CartBarWidget extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pop(context, MyRoutes.helloRoute);
+              Navigator.pop(
+                context,
+              );
             },
             child: Container(
               height: 60,

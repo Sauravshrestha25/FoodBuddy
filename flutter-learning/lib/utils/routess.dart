@@ -33,4 +33,6 @@ class MyRoutes {
   static String homepage2Route = "homepage2";
   static String Recovery2Route = "password2";
   static String recoveryverificaion2Route = "recoveryverification2";
+  static String popularRoute = "popular";
+  static String offersRoute = "offers";
 }

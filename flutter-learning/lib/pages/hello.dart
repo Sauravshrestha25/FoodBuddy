@@ -31,7 +31,6 @@ class hello extends StatelessWidget {
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                         filled: true,
-                        // fillColor: Colors.white,
                         border: InputBorder.none),
                   ),
                 ),
@@ -41,19 +40,17 @@ class hello extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // SizedBox(width: 15),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Text("Popular Items",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16)),
                   ),
-                  // SizedBox(width: 180),
                   Opacity(
                     opacity: 0.5,
                     child: TextButton(
                       onPressed: () {
-                        // Navigator.pushNamed(context, MyRoutes.pchangeRoute);
+                        Navigator.pushNamed(context, MyRoutes.popularRoute);
                       },
                       child: Text("See More",
                           style: TextStyle(
@@ -61,7 +58,6 @@ class hello extends StatelessWidget {
                             color: Colors.black,
                           )),
                     ),
-                    // Text("See More", style: TextStyle(fontSize: 12)),
                   ),
                 ],
               ),
@@ -74,19 +70,17 @@ class hello extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // SizedBox(width: 15),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Text("Offers Today",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16)),
                   ),
-                  // SizedBox(width: 180),
                   Opacity(
                     opacity: 0.5,
                     child: TextButton(
                       onPressed: () {
-                        // Navigator.pushNamed(context, MyRoutes.pchangeRoute);
+                        Navigator.pushNamed(context, MyRoutes.offersRoute);
                       },
                       child: Text("See More",
                           style: TextStyle(
@@ -144,7 +138,6 @@ class hello extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // FloatingActionButton(onPressed: () {}),
             InkWell(
               onTap: () => Navigator.pushNamed(context, MyRoutes.firstappRoute),
               child: Container(
