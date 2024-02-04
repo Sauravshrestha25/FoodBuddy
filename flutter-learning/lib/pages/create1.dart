@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_0/pages/home_page.dart';
+
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/CreateBarWidget.dart';
 
-class account1 extends StatelessWidget {
-  const account1({super.key});
+class account1 extends StatefulWidget {
+  const account1({super.key, required this.controller});
 
+  final TextEditingController controller;
+
+  @override
+  State<account1> createState() => _account1State();
+}
+
+class _account1State extends State<account1> {
+  var obsecureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +31,14 @@ class account1 extends StatelessWidget {
               child: ListView(
                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 50),
                   children: [
-                    // CreateBarWedget(),
                     Row(
                       children: [
                         Padding(padding: EdgeInsets.all(10)),
-                        Text("Full Name", style: TextStyle(fontSize: 16)),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child:
+                              Text("Full Name", style: TextStyle(fontSize: 16)),
+                        ),
                       ],
                     ),
                     ClipRRect(
@@ -53,6 +64,7 @@ class account1 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                       child: TextFormField(
                         decoration: InputDecoration(
+                          hintText: ("Enter your email"),
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 15),
                           filled: true,
@@ -71,17 +83,25 @@ class account1 extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: TextFormField(
-                        decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                              icon: Icon(CupertinoIcons.eye_slash_fill),
-                              onPressed: () {},
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 15),
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: InputBorder.none),
-                      ),
+                          controller: widget.controller,
+                          obscureText: obsecureText,
+                          decoration: InputDecoration(
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    obsecureText = !obsecureText;
+                                  });
+                                },
+                                child: obsecureText
+                                    ? const Icon(CupertinoIcons.eye_slash_fill)
+                                    : const Icon(CupertinoIcons.eye_fill),
+                              ),
+                              hintText: ("Enter your password"),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 15),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: InputBorder.none)),
                     ),
                     SizedBox(height: 5),
                     Row(
@@ -135,11 +155,11 @@ class account1 extends StatelessWidget {
                     SizedBox(height: 8),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => homepage(),
-                            ));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (_) => homepage(),
+                        //     ));
                       },
                       style: ElevatedButton.styleFrom(
                         // fixedSize: Size(100, 45),
@@ -163,15 +183,14 @@ class account1 extends StatelessWidget {
                       thickness: 2,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(padding: EdgeInsets.fromLTRB(55, 10, 20, 30)),
                         Text("Have an account?",
                             style: TextStyle(fontSize: 13)),
                         SizedBox(width: 3),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (_) => homepage()));
+                            Navigator.pushNamed(context, MyRoutes.homeRoute);
                           },
                           child: Text("Log in",
                               style: TextStyle(

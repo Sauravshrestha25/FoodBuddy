@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/utils/routess.dart';
 
 class addressbar extends StatelessWidget {
   const addressbar({super.key});
@@ -13,7 +14,7 @@ class addressbar extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, MyRoutes.userRoute);
             },
             child: Container(
               height: 60,

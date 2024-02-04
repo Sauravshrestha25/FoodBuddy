@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/BackBar.dart';
 
-class newpsuccess extends StatelessWidget {
-  const newpsuccess({super.key});
+class newpsuccess2 extends StatelessWidget {
+  const newpsuccess2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class newpsuccess extends StatelessWidget {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, MyRoutes.homeRoute);
+                        Navigator.pushNamed(context, MyRoutes.homepage2Route);
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: Size(100, 50),

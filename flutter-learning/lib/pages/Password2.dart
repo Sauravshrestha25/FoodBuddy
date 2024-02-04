@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/RecoveryBarWidget.dart';
 
-class Recovery extends StatelessWidget {
-  const Recovery({super.key});
+class Recovery2 extends StatelessWidget {
+  const Recovery2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class _recovery extends StatelessWidget {
           child: ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(
-                    context, MyRoutes.recoveryverificationRoute);
+                    context, MyRoutes.recoveryverificaion2Route);
               },
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(400, 45),

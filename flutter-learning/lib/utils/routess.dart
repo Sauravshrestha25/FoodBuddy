@@ -18,9 +18,19 @@ class MyRoutes {
   static String paymentRoute = "payment";
   static String RecoveryRoute = "password";
   static String recoveryverificationRoute = "recoveryverification";
-  static String newpasswordRoute = "newpassword";
+  static String newpassword1Route = "newpassword1";
+  static String newpassword2Route = "newpassword";
   static String newpsuccessRoute = "newpsuccess";
+  static String newpsuccess2Route = "newpsuccess2";
   static String setnotificationRoute = "setnotification";
   static String newaddressRoute = "newaddress";
   static String favouritesRoute = "favourites";
+  static String sellect1Route = "select1";
+  static String sellect2Route = "select2";
+  static String create2Route = "create2";
+  static String create3Route = "create3";
+  static String confirmation2Route = "confirmation2";
+  static String homepage2Route = "homepage2";
+  static String Recovery2Route = "password2";
+  static String recoveryverificaion2Route = "recoveryverification2";
 }

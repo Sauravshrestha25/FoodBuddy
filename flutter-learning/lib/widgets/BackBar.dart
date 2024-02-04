@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RecoveryBarWidget extends StatelessWidget {
-  const RecoveryBarWidget({super.key});
+class BackBarWidget extends StatelessWidget {
+  const BackBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -34,18 +32,6 @@ class RecoveryBarWidget extends StatelessWidget {
               child: Icon(CupertinoIcons.arrow_left),
             ),
           ),
-          Text(
-            "Password Recovery",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            width: 60,
-          )
-        ],
-      ),
-    );
+        ]));
   }
 }

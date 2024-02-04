@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_0/pages/first.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/BackBar.dart';
 
-class homepage extends StatefulWidget {
-  const homepage({super.key, required this.controller});
+class homepage2 extends StatefulWidget {
+  const homepage2({super.key, required this.controller});
 
   final TextEditingController controller;
 
   @override
-  State<homepage> createState() => _homepageState();
+  State<homepage2> createState() => _homepageState();
 }
 
-class _homepageState extends State<homepage> {
+class _homepageState extends State<homepage2> {
   TextEditingController passwordController = TextEditingController();
   var obsecureText = true;
   @override
@@ -112,7 +111,7 @@ class _homepageState extends State<homepage> {
                         TextButton(
                           onPressed: () {
                             Navigator.pushNamed(
-                                context, MyRoutes.RecoveryRoute);
+                                context, MyRoutes.Recovery2Route);
                           },
                           child: Text("Forgot Password?",
                               style: TextStyle(
@@ -125,11 +124,11 @@ class _homepageState extends State<homepage> {
                     SizedBox(height: 10),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => firstapp(),
-                              ));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (_) => firstapp(),
+                          //     ));
                         },
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(400, 45),
@@ -137,30 +136,30 @@ class _homepageState extends State<homepage> {
                           onPrimary: Colors.white,
                         ),
                         child: Text("Log In")),
-                    SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => firstapp(),
-                            ));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        onPrimary: Colors.black,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Log in with"),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Image.asset("assets/images/gmail.png",
-                              height: 20, width: 20),
-                        ],
-                      ),
-                    ),
+                    SizedBox(height: 30),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (_) => firstapp(),
+                    //         ));
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     onPrimary: Colors.black,
+                    //   ),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       Text("Log in with"),
+                    //       SizedBox(
+                    //         width: 10,
+                    //       ),
+                    //       Image.asset("assets/images/gmail.png",
+                    //           height: 20, width: 20),
+                    //     ],
+                    //   ),
+                    // ),
                     const Divider(
                       color: Colors.white,
                       height: 20,
@@ -176,7 +175,7 @@ class _homepageState extends State<homepage> {
                   SizedBox(width: 3),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, MyRoutes.accountRoute);
+                      Navigator.pushNamed(context, MyRoutes.create2Route);
                     },
                     child: Text("Sign up",
                         style:

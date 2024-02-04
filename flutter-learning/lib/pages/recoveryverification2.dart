@@ -6,8 +6,8 @@ import 'package:flutter_application_0/widgets/RecoveryBarWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
-class recoveryverification extends StatelessWidget {
-  const recoveryverification({super.key});
+class recoveryverification2 extends StatelessWidget {
+  const recoveryverification2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class recoveryverification extends StatelessWidget {
                           ElevatedButton(
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, MyRoutes.newpassword1Route);
+                                    context, MyRoutes.newpassword2Route);
                               },
                               style: ElevatedButton.styleFrom(
                                 fixedSize: Size(200, 45),

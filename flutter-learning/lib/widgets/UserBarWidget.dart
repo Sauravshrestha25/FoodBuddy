@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/utils/routess.dart';
 
 class UserBarWidget extends StatelessWidget {
   const UserBarWidget({super.key});
@@ -11,7 +12,7 @@ class UserBarWidget extends StatelessWidget {
         child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           InkWell(
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, MyRoutes.helloRoute);
             },
             child: Container(
               height: 60,

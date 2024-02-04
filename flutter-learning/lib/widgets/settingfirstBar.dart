@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/utils/routess.dart';
 
-class RecoveryBarWidget extends StatelessWidget {
-  const RecoveryBarWidget({super.key});
+class settingfirstBarWidget extends StatelessWidget {
+  const settingfirstBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, MyRoutes.userRoute);
             },
             child: Container(
               height: 60,
@@ -35,7 +36,7 @@ class RecoveryBarWidget extends StatelessWidget {
             ),
           ),
           Text(
-            "Password Recovery",
+            "Settings",
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,

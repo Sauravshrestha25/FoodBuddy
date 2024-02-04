@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_0/utils/routess.dart';
-import 'package:flutter_application_0/widgets/SettingBarWidget.dart';
+
+import 'package:flutter_application_0/widgets/settingfirstBar.dart';
 
 class setting extends StatelessWidget {
   const setting({super.key});
@@ -12,7 +13,7 @@ class setting extends StatelessWidget {
       backgroundColor: Color(0xffffcb01),
       body: ListView(
         children: [
-          settingBarWidget(),
+          settingfirstBarWidget(),
           SizedBox(
             height: 50,
           ),

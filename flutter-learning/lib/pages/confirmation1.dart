@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_0/pages/home_page.dart';
-import 'package:flutter_application_0/widgets/UserBarWidget.dart';
+import 'package:flutter_application_0/utils/routess.dart';
+import 'package:flutter_application_0/widgets/BackBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
@@ -15,7 +15,7 @@ class account2 extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: ListView(
             children: [
-              UserBarWidget(),
+              BackBarWidget(),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 SizedBox(height: 140),
                 Text("Enter the confirmation code",
@@ -65,11 +65,7 @@ class account2 extends StatelessWidget {
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => homepage(),
-                                ));
+                            Navigator.pushNamed(context, MyRoutes.homeRoute);
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: Size(200, 45),

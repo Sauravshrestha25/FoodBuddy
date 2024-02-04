@@ -253,8 +253,8 @@ class user extends StatelessWidget {
                     Row(
                       children: [
                         InkWell(
-                          onTap: () =>
-                              Navigator.pushNamed(context, MyRoutes.homeRoute),
+                          onTap: () => Navigator.pushNamed(
+                              context, MyRoutes.sellect1Route),
                           child: Container(
                             height: 30,
                             width: 30,
@@ -270,7 +270,8 @@ class user extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, MyRoutes.homeRoute);
+                            Navigator.pushNamed(
+                                context, MyRoutes.sellect1Route);
                           },
                           child: Text("Logout",
                               style: TextStyle(
