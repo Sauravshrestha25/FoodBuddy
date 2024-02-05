@@ -121,7 +121,8 @@ class hello extends StatelessWidget {
           child: FloatingActionButton(
             shape: CircleBorder(),
             backgroundColor: Color(0xff2a2828),
-            onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+            onPressed: () =>
+                Navigator.pushNamed(context, MyRoutes.categoriesRoute),
             child: Icon(
               CupertinoIcons.rectangle_grid_2x2_fill,
               color: Colors.white,

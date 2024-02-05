@@ -3,6 +3,7 @@ import 'package:flutter_application_0/pages/Order_History.dart';
 import 'package:flutter_application_0/pages/Password.dart';
 import 'package:flutter_application_0/pages/Password2.dart';
 import 'package:flutter_application_0/pages/Payment.dart';
+import 'package:flutter_application_0/pages/categories.dart';
 import 'package:flutter_application_0/pages/confirmation2.dart';
 import 'package:flutter_application_0/pages/create1.dart';
 import 'package:flutter_application_0/pages/confirmation1.dart';
@@ -104,6 +105,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.Recovery2Route: (context) => Recovery2(),
         MyRoutes.popularRoute: (context) => popular(),
         MyRoutes.offersRoute: (context) => offers(),
+        MyRoutes.categoriesRoute: (context) => categories(),
       },
     );
     return materialApp;
