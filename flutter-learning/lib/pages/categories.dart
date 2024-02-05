@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/utils/routess.dart';
 
 class categories extends StatelessWidget {
   const categories({super.key});
@@ -107,7 +108,9 @@ class __categoriesState extends State<_categories> {
           child: Column(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, MyRoutes.restaurantsRoute);
+                },
                 child: Container(
                   height: 100,
                   decoration: BoxDecoration(

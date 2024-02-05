@@ -36,4 +36,6 @@ class MyRoutes {
   static String popularRoute = "popular";
   static String offersRoute = "offers";
   static String categoriesRoute = "categories";
+  static String restaurantsRoute = "restaurants";
+  static String itemsRoute = "items";
 }
