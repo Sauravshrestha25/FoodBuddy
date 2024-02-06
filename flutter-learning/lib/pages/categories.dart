@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/core/store.dart';
+import 'package:flutter_application_0/models/food.dart';
+import 'package:flutter_application_0/models/restaurantModel.dart';
 import 'package:flutter_application_0/utils/routess.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class categories extends StatelessWidget {
   const categories({super.key});
@@ -97,43 +101,96 @@ class __categoriesState extends State<_categories> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 25, mainAxisSpacing: 23),
-        itemBuilder: (context, index) => Container(
-          height: 140,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(20),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, crossAxisSpacing: 25, mainAxisSpacing: 23),
+          // itemCount: 20,
+          itemCount: FoodModel.items.length,
+          // itemBuilder: (context, index) =>
+          itemBuilder: (context, index) =>
+              _catagoriesWidget(item: FoodModel.items[index])
+          // Container(
+          //   height: 140,
+          //   decoration: BoxDecoration(
+          //     color: Colors.transparent,
+          //     borderRadius: BorderRadius.circular(20),
+          //   ),
+          //   child: Column(
+          //     children: [
+          //       InkWell(
+          //         onTap: () {
+          //           Navigator.pushNamed(context, MyRoutes.restaurantsRoute);
+          //         },
+          //         child: Container(
+          //           height: 100,
+          //           decoration: BoxDecoration(
+          //               color: Colors.white,
+          //               borderRadius: BorderRadius.circular(20),
+          //               image: DecorationImage(
+          //                   image: AssetImage("assets/images/biryani.jpeg"),
+          //                   fit: BoxFit.cover)),
+          //         ),
+          //       ),
+          //       Text(
+          //         "Biryani",
+          //         textAlign: TextAlign.center,
+          //         style: TextStyle(
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.black,
+          //         ),
+          //       )
+          //     ],
+          //   ),
+          // ),
+          // itemCount: 20,
           ),
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, MyRoutes.restaurantsRoute);
-                },
-                child: Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/biryani.jpeg"),
-                          fit: BoxFit.cover)),
-                ),
-              ),
-              Text(
-                "Biryani",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              )
-            ],
+    );
+  }
+}
+
+class _catagoriesWidget extends StatelessWidget {
+  final Foods item;
+
+  const _catagoriesWidget({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    final RestaurantModel _restaurant = (VxState.store as MyStore).restaurant;
+    bool isInRestaurant = _restaurant.items?.contains(item) ?? false;
+    return Container(
+      height: 140,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, MyRoutes.restaurantsRoute);
+              if (!isInRestaurant) {
+                AddMutation(item);
+              }
+            },
+            child: Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                      image: AssetImage(item.image), fit: BoxFit.cover)),
+            ),
           ),
-        ),
-        itemCount: 20,
+          Text(
+            item.name,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          )
+        ],
       ),
     );
   }

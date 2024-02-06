@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/core/store.dart';
 import 'package:flutter_application_0/pages/Order_History.dart';
 import 'package:flutter_application_0/pages/Password.dart';
 import 'package:flutter_application_0/pages/Password2.dart';
@@ -40,9 +41,11 @@ import 'package:flutter_application_0/pages/user.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/pages/notification.dart';
 import 'package:flutter_application_0/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(MyApp());
+  // runApp(MyApp());
+  runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/core/store.dart';
+import 'package:flutter_application_0/models/CartModel.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/CartBarWidget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -49,6 +52,7 @@ class _cartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
@@ -71,13 +75,30 @@ class _cartTotal extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  Text(
-                    "Rs 590",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Rs ",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      VxBuilder(
+                        mutations: {RemoveMutation},
+                        builder: (context, store, status) {
+                          return Text(
+                            _cart.totalPrice.toString(),
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -97,7 +118,7 @@ class _cartTotal extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Rs 76.7",
+                    "Rs 0",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -122,7 +143,7 @@ class _cartTotal extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Rs 100",
+                    "Rs 0",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -147,13 +168,30 @@ class _cartTotal extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  Text(
-                    "Rs 766.7",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Rs ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      VxBuilder(
+                        mutations: {RemoveMutation},
+                        builder: (context, store, status) {
+                          return Text(
+                            _cart.totalPrice.toString(),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -175,87 +213,105 @@ class _cartlist extends StatefulWidget {
 class __cartlistState extends State<_cartlist> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              child: Container(
-                height: 90,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
+    return _cart.items!.isEmpty
+        ? "Cart's empty,keep feasting!...".text.xl2.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items?.length,
+            itemBuilder: (context, index) => Padding(
+                  padding:
+                      const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  child: Container(
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            "Chicken momo",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                _cart.items![index].name,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Rs ",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text(
+                                    _cart.items![index].price.toString(),
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 80,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Icon(
+                                        CupertinoIcons.minus_circled,
+                                        size: 25,
+                                      ),
+                                    ),
+                                    Text(
+                                      "2",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Icon(
+                                        CupertinoIcons.add_circled,
+                                        size: 25,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
-                          Text(
-                            "Rs 250",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 80,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: Icon(
-                                    CupertinoIcons.minus_circled,
-                                    size: 25,
-                                  ),
-                                ),
-                                Text(
-                                  "2",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Icon(
-                                    CupertinoIcons.add_circled,
-                                    size: 25,
-                                  ),
-                                ),
-                              ],
+                          InkWell(
+                            onTap: () => RemoveMutation(_cart.items![index]),
+                            child: Icon(
+                              CupertinoIcons.delete,
+                              size: 30,
+                              color: Colors.redAccent,
                             ),
                           )
                         ],
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: Icon(
-                          CupertinoIcons.delete,
-                          size: 30,
-                          color: Colors.redAccent,
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ));
+                ));
   }
 }

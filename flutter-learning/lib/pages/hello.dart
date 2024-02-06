@@ -1,11 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/models/food.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/AppBarWidget.dart';
+import 'package:flutter_application_0/widgets/offeritemWidget.dart';
+import 'package:flutter_application_0/widgets/popularitemWidged.dart';
 
-class hello extends StatelessWidget {
+class hello extends StatefulWidget {
   const hello({super.key});
 
+  @override
+  State<hello> createState() => _helloState();
+}
+
+class _helloState extends State<hello> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -213,80 +221,13 @@ class _popular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: 10,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          height: 150,
-          width: 150,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: Color(0xffa9411d)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () {},
-                child: CircleAvatar(
-                  radius: 45,
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage(
-                    "assets/images/Yakisoba Noodles.jpg",
-                  ),
-                ),
-              ),
-              Text(
-                "Yakisoba Noodles",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                "Noodles with pork",
-                style: TextStyle(
-                  fontSize: 8,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xfff8bf40),
-                ),
-              ),
-              Text(
-                "Rs.100.00",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                    "Add to cart is not supporting yet.",
-                    textAlign: TextAlign.center,
-                  )));
-                },
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(width: 2, color: Colors.white)),
-                  child: Icon(
-                    CupertinoIcons.bag_fill,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return (FoodModel.items.isNotEmpty)
+        ? ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: FoodModel.items.length,
+            itemBuilder: (context, index) =>
+                popularitemWidget(item: FoodModel.items[index]))
+        : Center(child: CircularProgressIndicator());
   }
 }
 
@@ -295,79 +236,86 @@ class _offer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: 10,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          height: 150,
-          width: 150,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: Color(0xffa9411d)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () {},
-                child: CircleAvatar(
-                  radius: 45,
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage(
-                    "assets/images/m2.jpg",
-                  ),
-                ),
-              ),
-              Text(
-                "Buff Momo Steam",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                "Lower Ground Khaja Ghar",
-                style: TextStyle(
-                  fontSize: 8,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xfff8bf40),
-                ),
-              ),
-              Text(
-                "Rs.120.00",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                    "Add to cart is not supporting yet.",
-                    textAlign: TextAlign.center,
-                  )));
-                },
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(width: 2, color: Colors.white)),
-                  child: Icon(
-                    CupertinoIcons.bag_fill,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return (FoodModel.items.isNotEmpty)
+        ? ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: FoodModel.items.length,
+            itemBuilder: (context, index) =>
+                offeritemWidget(item: FoodModel.items[index]))
+        : Center(child: CircularProgressIndicator());
+    //  ListView.builder(
+    //   scrollDirection: Axis.horizontal,
+    //   itemCount: 10,
+    //   itemBuilder: (context, index) => Padding(
+    //     padding: const EdgeInsets.all(10),
+    //     child: Container(
+    //       height: 150,
+    //       width: 150,
+    //       decoration: BoxDecoration(
+    //           borderRadius: BorderRadius.circular(30),
+    //           color: Color(0xffa9411d)),
+    //       child: Column(
+    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         children: [
+    //           InkWell(
+    //             onTap: () {},
+    //             child: CircleAvatar(
+    //               radius: 45,
+    //               backgroundColor: Colors.white,
+    //               backgroundImage: AssetImage(
+    //                 "assets/images/m2.jpg",
+    //               ),
+    //             ),
+    //           ),
+    //           Text(
+    //             "Buff Momo Steam",
+    //             style: TextStyle(
+    //               fontSize: 12,
+    //               fontWeight: FontWeight.bold,
+    //               color: Colors.white,
+    //             ),
+    //           ),
+    //           Text(
+    //             "Lower Ground Khaja Ghar",
+    //             style: TextStyle(
+    //               fontSize: 8,
+    //               fontWeight: FontWeight.bold,
+    //               color: Color(0xfff8bf40),
+    //             ),
+    //           ),
+    //           Text(
+    //             "Rs.120.00",
+    //             style: TextStyle(
+    //               fontSize: 12,
+    //               fontWeight: FontWeight.bold,
+    //               color: Colors.white,
+    //             ),
+    //           ),
+    //           InkWell(
+    //             onTap: () {
+    //               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //                   content: Text(
+    //                 "Add to cart is not supporting yet.",
+    //                 textAlign: TextAlign.center,
+    //               )));
+    //             },
+    //             child: Container(
+    //               height: 40,
+    //               width: 40,
+    //               decoration: BoxDecoration(
+    //                   shape: BoxShape.circle,
+    //                   border: Border.all(width: 2, color: Colors.white)),
+    //               child: Icon(
+    //                 CupertinoIcons.bag_fill,
+    //                 color: Colors.white,
+    //               ),
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }
