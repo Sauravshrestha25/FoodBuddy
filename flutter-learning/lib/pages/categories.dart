@@ -148,15 +148,21 @@ class __categoriesState extends State<_categories> {
   }
 }
 
-class _catagoriesWidget extends StatelessWidget {
+class _catagoriesWidget extends StatefulWidget {
   final Foods item;
 
   const _catagoriesWidget({super.key, required this.item});
 
   @override
+  State<_catagoriesWidget> createState() => _catagoriesWidgetState();
+}
+
+class _catagoriesWidgetState extends State<_catagoriesWidget> {
+  @override
   Widget build(BuildContext context) {
     final RestaurantModel _restaurant = (VxState.store as MyStore).restaurant;
-    bool isInRestaurant = _restaurant.items?.contains(item) ?? false;
+    VxState.watch(context, on: [AddMutation, RemoveMutation]);
+    bool isInRestaurant = _restaurant.items?.contains(widget.item) ?? false;
     return Container(
       height: 140,
       decoration: BoxDecoration(
@@ -169,8 +175,9 @@ class _catagoriesWidget extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, MyRoutes.restaurantsRoute);
               if (!isInRestaurant) {
-                AddMutation(item);
+                AddMutation(widget.item);
               }
+              setState(() {});
             },
             child: Container(
               height: 100,
@@ -178,11 +185,11 @@ class _catagoriesWidget extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage(item.image), fit: BoxFit.cover)),
+                      image: AssetImage(widget.item.image), fit: BoxFit.cover)),
             ),
           ),
           Text(
-            item.name,
+            widget.item.name,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,

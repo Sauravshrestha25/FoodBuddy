@@ -29,3 +29,13 @@ class AddMutation extends VxMutation<MyStore> {
     store!.restaurant._itemIds.add(item.id - 1);
   }
 }
+
+class RemoveMutation extends VxMutation<MyStore> {
+  final Foods item;
+
+  RemoveMutation(this.item);
+  @override
+  perform() {
+    store!.restaurant._itemIds.remove(item.id - 1);
+  }
+}

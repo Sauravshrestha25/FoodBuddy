@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_0/pages/first.dart';
 import 'package:flutter_application_0/utils/routess.dart';
-import 'package:flutter_application_0/widgets/BackBar.dart';
+// import 'package:flutter_application_0/widgets/BackBar.dart';
 
 class homepage extends StatefulWidget {
   const homepage({super.key, required this.controller});
@@ -23,7 +23,10 @@ class _homepageState extends State<homepage> {
         body: ListView(
             padding: EdgeInsets.only(left: 10, top: 40, right: 10),
             children: [
-              BackBarWidget(),
+              // BackBarWidget(),
+              SizedBox(
+                height: 60,
+              ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5)),
               Padding(

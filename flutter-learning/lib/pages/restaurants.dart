@@ -8,7 +8,9 @@ import 'package:flutter_application_0/utils/routess.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class restaurants extends StatelessWidget {
-  const restaurants({super.key});
+  const restaurants({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +19,6 @@ class restaurants extends StatelessWidget {
       body: ListView(
         children: [
           _restaurantbar(),
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 20, bottom: 10),
-          //   child: Text(
-          //     "Khaja set",
-          //     // _restaurant.items![index].name,
-          //     textAlign: TextAlign.center,
-          //     style: TextStyle(
-          //       fontSize: 20,
-          //       fontWeight: FontWeight.bold,
-          //       color: Colors.black,
-          //     ),
-          //   ),
-          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Placeholder(
@@ -116,7 +105,6 @@ class __restaurantsState extends State<_restaurants> {
               padding: const EdgeInsets.only(top: 20, bottom: 10),
               child: Text(
                 _restaurant.items![index].name,
-                // _restaurant.items![index].name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,

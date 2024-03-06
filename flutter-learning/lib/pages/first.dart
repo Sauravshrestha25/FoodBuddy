@@ -52,37 +52,37 @@ class firstapp extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 6),
-              InkWell(
-                onTap: () {
-                  // Navigator.pushNamed(context, MyRoutes.helloRoute);
-                },
-                child: Container(
-                  height: 180,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/second.jpg"),
-                        fit: BoxFit.cover),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5),
-                child: Text(
-                  "Create your own magic!",
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     // Navigator.pushNamed(context, MyRoutes.helloRoute);
+              //   },
+              //   child: Container(
+              //     height: 180,
+              //     width: 300,
+              //     decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //           image: AssetImage("assets/images/second.jpg"),
+              //           fit: BoxFit.cover),
+              //       color: Colors.white,
+              //       borderRadius: BorderRadius.circular(50),
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.grey.withOpacity(0.5),
+              //           spreadRadius: 2,
+              //           blurRadius: 10,
+              //           offset: Offset(0, 3),
+              //         )
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 5),
+              //   child: Text(
+              //     "Create your own magic!",
+              //     textAlign: TextAlign.center,
+              //   ),
+              // ),
               SizedBox(height: 6),
               InkWell(
                 onTap: () {
