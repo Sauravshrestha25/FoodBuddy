@@ -18,6 +18,7 @@ import 'package:flutter_application_0/pages/hello.dart';
 import 'package:flutter_application_0/pages/home_page.dart';
 import 'package:flutter_application_0/pages/homepage2.dart';
 import 'package:flutter_application_0/pages/items.dart';
+import 'package:flutter_application_0/pages/moodselection.dart';
 
 import 'package:flutter_application_0/pages/new_password.dart';
 import 'package:flutter_application_0/pages/newaddress.dart';
@@ -30,6 +31,7 @@ import 'package:flutter_application_0/pages/personal.dart';
 import 'package:flutter_application_0/pages/popular.dart';
 import 'package:flutter_application_0/pages/psuccess.dart';
 import 'package:flutter_application_0/pages/pverification.dart';
+import 'package:flutter_application_0/pages/recommend.dart';
 import 'package:flutter_application_0/pages/recoveryverification.dart';
 import 'package:flutter_application_0/pages/recoveryverification2.dart';
 import 'package:flutter_application_0/pages/restaurants.dart';
@@ -113,6 +115,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.categoriesRoute: (context) => categories(),
         MyRoutes.restaurantsRoute: (context) => restaurants(),
         MyRoutes.itemsRoute: (context) => items(),
+        MyRoutes.moodRoute: (context) => mood(),
+        MyRoutes.recommendRoute: (context) => recommend(),
       },
     );
     return materialApp;

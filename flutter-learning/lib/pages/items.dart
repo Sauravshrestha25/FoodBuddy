@@ -1,5 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/core/store.dart';
+import 'package:flutter_application_0/utils/routess.dart';
+
+import 'package:flutter_application_0/widgets/head.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_application_0/models/food.dart';
+import '../models/CartModel.dart';
 
 class items extends StatelessWidget {
   const items({super.key});
@@ -12,14 +19,52 @@ class items extends StatelessWidget {
         children: [
           _itemsbar(),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
+            child: Placeholder(
+              color: Colors.transparent,
+              fallbackHeight: 110,
+              child: head(),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
             child: Placeholder(
               color: Colors.transparent,
               fallbackHeight: 660,
-              child: _head(),
+              child: _items(),
             ),
-          )
+          ),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 0),
+        child: Container(
+          height: 80,
+          width: 80,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(80),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: Offset(0, 3),
+              )
+            ],
+          ),
+          child: FloatingActionButton(
+            shape: CircleBorder(),
+            backgroundColor: Color(0xff2a2828),
+            onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+            child: Icon(
+              CupertinoIcons.bag_fill,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -68,8 +113,9 @@ class _itemsbar extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
-            // Navigator.pushNamed(context, MyRoutes.notificationRoute),
+            onTap: () {
+              Navigator.pushNamed(context, MyRoutes.favouritesRoute);
+            },
             child: Container(
               height: 60,
               width: 60,
@@ -98,105 +144,15 @@ class _itemsbar extends StatelessWidget {
   }
 }
 
-class _head extends StatelessWidget {
-  const _head({super.key});
+class _items extends StatelessWidget {
+  const _items({
+    super.key,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 110,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: Colors.white),
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      "JIMBU THAKALI",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Opacity(
-                      opacity: 0.8,
-                      child: Text(
-                        "New Baneshwor",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w100,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Icon(
-                            CupertinoIcons.star,
-                            size: 20,
-                            color: Color(0xfffdb600),
-                          ),
-                        ),
-                        Text(
-                          "4.0",
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
-                        )
-                      ],
-                    ),
-                    Opacity(
-                      opacity: 0.8,
-                      child: Text(
-                        "9:30 AM to 10:30 PM",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w100,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-        Placeholder(
-          color: Colors.transparent,
-          fallbackHeight: 550,
-          child: _items(),
-        )
-      ],
-    );
-  }
-}
-
-class _items extends StatefulWidget {
-  const _items({super.key});
-
-  @override
-  State<_items> createState() => __itemsState();
-}
-
-class __itemsState extends State<_items> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 20,
+        itemCount: FoodModel.items.length,
         itemBuilder: (context, index) => Column(
               children: [
                 Padding(
@@ -210,7 +166,7 @@ class __itemsState extends State<_items> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
-                        "Khana Set",
+                        "Food Name",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -224,25 +180,24 @@ class __itemsState extends State<_items> {
                 Placeholder(
                   color: Colors.transparent,
                   fallbackHeight: 220,
-                  child: _itemsname(),
+                  child: _itemsname(item: FoodModel.items[index]),
                 )
               ],
             ));
   }
 }
 
-class _itemsname extends StatefulWidget {
-  const _itemsname({super.key});
+class _itemsname extends StatelessWidget {
+  final Foods item;
+  const _itemsname({super.key, required this.item});
 
-  @override
-  State<_itemsname> createState() => __itemsnameState();
-}
-
-class __itemsnameState extends State<_itemsname> {
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [AddMutation, RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
+    bool isinCart = _cart.items?.contains(item) ?? false;
     return ListView.builder(
-        itemCount: 3,
+        itemCount: 1,
         itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Container(
@@ -262,20 +217,32 @@ class __itemsnameState extends State<_itemsname> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Chicken momo",
+                              item.name,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
                             ),
-                            Text(
-                              "Rs 250",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Rs.",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  item.price.toString(),
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -288,26 +255,58 @@ class __itemsnameState extends State<_itemsname> {
                                   fontWeight: FontWeight.w500,
                                   color: Colors.green),
                             )),
+                        // InkWell(
+                        //   onTap: () {
+                        //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        //         content: Text(
+                        //       "Add to cart is not supporting yet.",
+                        //       textAlign: TextAlign.center,
+                        //     )));
+                        //   },
+                        //   child: Container(
+                        //     height: 40,
+                        //     width: 40,
+                        //     decoration: BoxDecoration(
+                        //         shape: BoxShape.circle,
+                        //         border:
+                        //             Border.all(width: 2, color: Colors.black)),
+                        //     child: Icon(
+                        //       CupertinoIcons.bag_fill,
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        // ),
                         InkWell(
                           onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                              "Add to cart is not supporting yet.",
-                              textAlign: TextAlign.center,
-                            )));
+                            if (!isinCart) {
+                              AddMutation(item);
+                            }
                           },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 2, color: Colors.black)),
-                            child: Icon(
-                              CupertinoIcons.bag_fill,
-                              color: Colors.black,
-                            ),
-                          ),
+                          child: isinCart
+                              ? Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: 2, color: Colors.black)),
+                                  child: Icon(
+                                    Icons.done,
+                                    color: Colors.black,
+                                  ),
+                                )
+                              : Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: 2, color: Colors.black)),
+                                  child: Icon(
+                                    CupertinoIcons.bag_fill,
+                                    color: Colors.black,
+                                  ),
+                                ),
                         ),
                       ]),
                 ),

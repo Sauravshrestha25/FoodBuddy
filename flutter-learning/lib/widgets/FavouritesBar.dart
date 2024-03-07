@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_0/utils/routess.dart';
 
 class favouriteBarWedget extends StatelessWidget {
   const favouriteBarWedget({super.key});
@@ -14,7 +13,7 @@ class favouriteBarWedget extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, MyRoutes.homeRoute);
+              Navigator.pop(context);
             },
             child: Container(
               height: 60,

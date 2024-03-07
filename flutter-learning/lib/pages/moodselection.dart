@@ -1,20 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_application_0/utils/routess.dart';
-import 'package:flutter_application_0/widgets/CreateBarWidget.dart';
+import 'package:flutter_application_0/widgets/AppBarWidget.dart';
 
 class mood extends StatefulWidget {
-  const mood({super.key, required this.controller});
-
-  final TextEditingController controller;
+  const mood({
+    super.key,
+  });
 
   @override
-  State<mood> createState() => _account1State();
+  State<mood> createState() => _moodState();
 }
 
-class _account1State extends State<mood> {
-  var obsecureText = true;
+class _moodState extends State<mood> {
+  String dropdownValue = 'Select your Mood';
+  var items = [
+    "Select your Mood",
+    "Happy",
+    "Sad",
+    "Angry",
+    "Excited",
+    "Stressed",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,87 +31,26 @@ class _account1State extends State<mood> {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
-              child: CreateBarWedget(),
+              padding: const EdgeInsets.all(10),
+              child: AppBarWidget(),
             ),
             Container(
               height: 700,
               child: ListView(
                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 50),
                   children: [
-                    // Row(
-                    //   children: [
-                    //     Padding(padding: EdgeInsets.all(10)),
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(top: 20),
-                    //       child:
-                    //           Text("Full Name", style: TextStyle(fontSize: 16)),
-                    //     ),
-                    //   ],
-                    // ),
-                    // ClipRRect(
-                    //   borderRadius: BorderRadius.circular(50),
-                    //   child: TextFormField(
-                    //     decoration: InputDecoration(
-                    //       contentPadding: EdgeInsets.symmetric(
-                    //           horizontal: 15, vertical: 15),
-                    //       filled: true,
-                    //       fillColor: Colors.white,
-                    //       border: InputBorder.none,
-                    //     ),
-                    //   ),
-                    // ),
-                    // SizedBox(height: 5),
-                    // Row(
-                    //   children: [
-                    //     Padding(padding: EdgeInsets.all(10)),
-                    //     Text("Email", style: TextStyle(fontSize: 16)),
-                    //   ],
-                    // ),
-                    // ClipRRect(
-                    //   borderRadius: BorderRadius.circular(50),
-                    //   child: TextFormField(
-                    //     decoration: InputDecoration(
-                    //       hintText: ("Enter your email"),
-                    //       contentPadding: EdgeInsets.symmetric(
-                    //           horizontal: 15, vertical: 15),
-                    //       filled: true,
-                    //       fillColor: Colors.white,
-                    //       border: InputBorder.none,
-                    //     ),
-                    //   ),
-                    // ),
-                    // SizedBox(height: 5),
-                    // Row(
-                    //   children: [
-                    //     Padding(padding: EdgeInsets.all(10)),
-                    //     Text("Password", style: TextStyle(fontSize: 16)),
-                    //   ],
-                    // ),
-                    // ClipRRect(
-                    //   borderRadius: BorderRadius.circular(50),
-                    //   child: TextFormField(
-                    //       controller: widget.controller,
-                    //       obscureText: obsecureText,
-                    //       decoration: InputDecoration(
-                    //           suffixIcon: GestureDetector(
-                    //             onTap: () {
-                    //               setState(() {
-                    //                 obsecureText = !obsecureText;
-                    //               });
-                    //             },
-                    //             child: obsecureText
-                    //                 ? const Icon(CupertinoIcons.eye_slash_fill)
-                    //                 : const Icon(CupertinoIcons.eye_fill),
-                    //           ),
-                    //           hintText: ("Enter your password"),
-                    //           contentPadding: EdgeInsets.symmetric(
-                    //               horizontal: 15, vertical: 15),
-                    //           filled: true,
-                    //           fillColor: Colors.white,
-                    //           border: InputBorder.none)),
-                    // ),
-                    // SizedBox(height: 5),
+                    Text(
+                      "Please fill up the given parameter below to get food recommended",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Row(
                       children: [
                         Padding(padding: EdgeInsets.all(10)),
@@ -114,7 +61,28 @@ class _account1State extends State<mood> {
                       borderRadius: BorderRadius.circular(50),
                       child: TextFormField(
                         decoration: InputDecoration(
-                            hintText: "Enter your age",
+                            hintText: "Enter your age here (min.age 20 )",
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 15),
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: InputBorder.none),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text("Weight", style: TextStyle(fontSize: 16)),
+                      ],
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            hintText: "Enter your weight here",
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 15),
                             filled: true,
@@ -141,7 +109,7 @@ class _account1State extends State<mood> {
                             border: InputBorder.none),
                       ),
                     ),
-                    SizedBox(height: 35),
+                    SizedBox(height: 10),
                     Row(
                       children: [
                         Padding(padding: EdgeInsets.all(10)),
@@ -149,76 +117,44 @@ class _account1State extends State<mood> {
                             style: TextStyle(fontSize: 16)),
                       ],
                     ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            hintText: "Enter your Gender here",
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 15),
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: InputBorder.none),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
+                      child: Center(
+                        child: DropdownButton(
+                          items: items.map((String item) {
+                            return DropdownMenuItem(
+                                value: item, child: Text(item));
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue!;
+                            });
+                          },
+                          value: dropdownValue,
+                          borderRadius: BorderRadius.circular(10),
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          iconSize: 30,
+                          style: TextStyle(fontSize: 18, color: Colors.black),
+                        ),
                       ),
                     ),
-
-                    // ElevatedButton(
-                    //     onPressed: () {
-                    //       Navigator.pushNamed(
-                    //           context, MyRoutes.verificationRoute);
-                    //     },
-                    //     style: ElevatedButton.styleFrom(
-                    //       fixedSize: Size(400, 45),
-                    //       primary: Color(0xffff7f50),
-                    //       onPrimary: Colors.white,
-                    //     ),
-                    //     child: Text("Sign Up")),
-                    // SizedBox(height: 8),
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     // Navigator.push(
-                    //     //     context,
-                    //     //     MaterialPageRoute(
-                    //     //       builder: (_) => homepage(),
-                    //     //     ));
-                    //   },
-                    //   style: ElevatedButton.styleFrom(
-                    //     // fixedSize: Size(100, 45),
-                    //     onPrimary: Colors.black,
-                    //   ),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: [
-                    //       Text("Log in with"),
-                    //       SizedBox(
-                    //         width: 10,
-                    //       ),
-                    //       Image.asset("assets/images/gmail.png",
-                    //           height: 20, width: 20),
-                    //     ],
-                    //   ),
-                    // ),
-                    // const Divider(
-                    //   color: Colors.white,
-                    //   height: 20,
-                    //   thickness: 2,
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Text("Have an account?",
-                    //         style: TextStyle(fontSize: 13)),
-                    //     SizedBox(width: 3),
-                    //     TextButton(
-                    //       onPressed: () {
-                    //         Navigator.pushNamed(context, MyRoutes.homeRoute);
-                    //       },
-                    //       child: Text("Log in",
-                    //           style: TextStyle(
-                    //               fontSize: 13, color: Color(0xffff7f50))),
-                    //     ),
-                    //   ],
-                    // ),
+                    SizedBox(
+                      height: 60,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, MyRoutes.recommendRoute);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(400, 45),
+                          primary: Color(0xffff7f50),
+                          onPrimary: Colors.white,
+                        ),
+                        child: Text("Submit")),
                   ]),
             ),
           ],

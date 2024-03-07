@@ -95,119 +95,131 @@ class __restaurantsState extends State<_restaurants> {
   @override
   Widget build(BuildContext context) {
     final RestaurantModel _restaurant = (VxState.store as MyStore).restaurant;
-    return ListView.builder(
-      itemCount: _restaurant.items?.length,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(2.5),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 10),
-              child: Text(
-                _restaurant.items![index].name,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
+    return _restaurant.items!.isEmpty
+        ? Padding(
+            padding: const EdgeInsets.only(top: 250),
+            child: const Text(
+              "There is no any Restaurants available for your food item yet.....!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w100,
+                  color: Colors.black),
             ),
-            Container(
-              height: 70,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Icon(
-                            CupertinoIcons.star,
-                            size: 20,
-                            color: Color(0xfffdb600),
-                          ),
-                        ),
-                        Text(
-                          "4.0",
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
-                        )
-                      ],
+          )
+        : ListView.builder(
+            itemCount: _restaurant.items?.length,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(2.5),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 10),
+                    child: Text(
+                      _restaurant.items![index].name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 30),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                  Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            _restaurant.items![index].restaurant,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ),
                           Row(
                             children: [
-                              Opacity(
-                                opacity: 0.5,
-                                child: Text(
-                                  _restaurant.items![index].city,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: Icon(
+                                  CupertinoIcons.star,
+                                  size: 20,
+                                  color: Color(0xfffdb600),
                                 ),
                               ),
-                              Opacity(
-                                opacity: 0.5,
-                                child: Text(
-                                  ",",
-                                  style: TextStyle(
-                                    fontSize: 12,
+                              Text(
+                                "4.0",
+                                style: TextStyle(
+                                    fontSize: 16,
                                     color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Opacity(
-                                opacity: 0.5,
-                                child: Text(
-                                  _restaurant.items![index].address,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
+                                    fontWeight: FontWeight.w500),
+                              )
                             ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _restaurant.items![index].restaurant,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Opacity(
+                                      opacity: 0.5,
+                                      child: Text(
+                                        _restaurant.items![index].city,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    Opacity(
+                                      opacity: 0.5,
+                                      child: Text(
+                                        ",",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    Opacity(
+                                      opacity: 0.5,
+                                      child: Text(
+                                        _restaurant.items![index].address,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, MyRoutes.itemsRoute);
+                            },
+                            child: Icon(CupertinoIcons.forward),
                           )
                         ],
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, MyRoutes.itemsRoute);
-                      },
-                      child: Icon(CupertinoIcons.forward),
-                    )
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

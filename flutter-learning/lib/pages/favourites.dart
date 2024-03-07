@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/widgets/FavouritesBar.dart';
 
 class favourites extends StatelessWidget {
@@ -107,7 +108,9 @@ class __historyState extends State<_favourites> {
                   width: 80,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, MyRoutes.itemsRoute);
+                  },
                   child: Icon(CupertinoIcons.forward),
                 )
               ],

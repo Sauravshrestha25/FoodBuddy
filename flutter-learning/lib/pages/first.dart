@@ -86,7 +86,7 @@ class firstapp extends StatelessWidget {
               SizedBox(height: 6),
               InkWell(
                 onTap: () {
-                  // Navigator.pushNamed(context, MyRoutes.helloRoute);
+                  Navigator.pushNamed(context, MyRoutes.moodRoute);
                 },
                 child: Container(
                   height: 180,
