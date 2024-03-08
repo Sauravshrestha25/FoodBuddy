@@ -5,7 +5,7 @@ class FoodModel {
         restaurant: "Burger Express",
         name: "Khana Set",
         city: "Kathmandu",
-        price: 320.00,
+        price: 320,
         address: "Balkumari",
         image: "assets/images/mk1.jpeg"),
     Foods(
@@ -13,7 +13,7 @@ class FoodModel {
         restaurant: "Upper Ground",
         name: "Momo",
         city: "Lalitpur",
-        price: 120.00,
+        price: 120,
         address: "Kharibot",
         image: "assets/images/m1.jpeg"),
     Foods(
@@ -21,7 +21,7 @@ class FoodModel {
         restaurant: "Lower Ground",
         name: "Noodles",
         city: "Kathmandu",
-        price: 140.00,
+        price: 140,
         address: "Koteshwor",
         image: "assets/images/Yakisoba Noodles.jpg"),
     Foods(
@@ -29,7 +29,7 @@ class FoodModel {
         restaurant: "Burger House",
         name: "Pizza",
         city: "Lalitpur",
-        price: 330.00,
+        price: 330,
         address: "Gwarko",
         image: "assets/images/pizza.jpg"),
     Foods(
@@ -37,7 +37,7 @@ class FoodModel {
         restaurant: "Kwality Food Cafe",
         name: "Biryani",
         city: "Kathmandu",
-        price: 220.00,
+        price: 220,
         address: "Balkumari",
         image: "assets/images/biryani.jpeg"),
     Foods(
@@ -45,7 +45,7 @@ class FoodModel {
         restaurant: "Bajeko Kima Noodles",
         name: "Chowmein",
         city: "Kathmandu",
-        price: 110.00,
+        price: 110,
         address: "Baneshwor",
         image: "assets/images/n1.jpg"),
     Foods(
@@ -53,7 +53,7 @@ class FoodModel {
         restaurant: "Burger House",
         name: "Burger",
         city: "Kathmandu",
-        price: 170.00,
+        price: 170,
         address: "Satdobato",
         image: "assets/images/burger.jpeg"),
     Foods(
@@ -61,7 +61,7 @@ class FoodModel {
         restaurant: "Newari khaja Ghar",
         name: "French Fry",
         city: "Lalitpur",
-        price: 80.00,
+        price: 80,
         address: "Lagankhel",
         image: "assets/images/fry.jpeg"),
   ];

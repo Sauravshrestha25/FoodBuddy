@@ -23,7 +23,7 @@ class items extends StatelessWidget {
             child: Placeholder(
               color: Colors.transparent,
               fallbackHeight: 110,
-              child: head(),
+              child: _head(),
             ),
           ),
           Padding(
@@ -70,9 +70,15 @@ class items extends StatelessWidget {
   }
 }
 
-class _itemsbar extends StatelessWidget {
+class _itemsbar extends StatefulWidget {
   const _itemsbar({super.key});
 
+  @override
+  State<_itemsbar> createState() => _itemsbarState();
+}
+
+class _itemsbarState extends State<_itemsbar> {
+  bool click = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -114,7 +120,9 @@ class _itemsbar extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, MyRoutes.favouritesRoute);
+              setState(() {
+                click = !click;
+              });
             },
             child: Container(
               height: 60,
@@ -132,15 +140,41 @@ class _itemsbar extends StatelessWidget {
                   )
                 ],
               ),
-              child: Icon(
-                CupertinoIcons.heart_fill,
-                color: Colors.black,
-              ),
+              child: click == true
+                  ? Icon(
+                      CupertinoIcons.heart_fill,
+                      color: Colors.black,
+                    )
+                  : Icon(
+                      CupertinoIcons.heart_fill,
+                      color: Colors.red,
+                    ),
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class _head extends StatelessWidget {
+  const _head({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: 1,
+        itemBuilder: (context, index) => Column(
+              children: [
+                Placeholder(
+                  color: Colors.transparent,
+                  fallbackHeight: 220,
+                  child: head(),
+                )
+              ],
+            ));
   }
 }
 
@@ -255,27 +289,6 @@ class _itemsname extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: Colors.green),
                             )),
-                        // InkWell(
-                        //   onTap: () {
-                        //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        //         content: Text(
-                        //       "Add to cart is not supporting yet.",
-                        //       textAlign: TextAlign.center,
-                        //     )));
-                        //   },
-                        //   child: Container(
-                        //     height: 40,
-                        //     width: 40,
-                        //     decoration: BoxDecoration(
-                        //         shape: BoxShape.circle,
-                        //         border:
-                        //             Border.all(width: 2, color: Colors.black)),
-                        //     child: Icon(
-                        //       CupertinoIcons.bag_fill,
-                        //       color: Colors.black,
-                        //     ),
-                        //   ),
-                        // ),
                         InkWell(
                           onTap: () {
                             if (!isinCart) {

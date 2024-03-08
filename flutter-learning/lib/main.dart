@@ -43,6 +43,7 @@ import 'package:flutter_application_0/pages/user.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 import 'package:flutter_application_0/pages/notification.dart';
 import 'package:flutter_application_0/widgets/themes.dart';
+import 'package:khalti_flutter/khalti_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
@@ -53,72 +54,81 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var materialApp = MaterialApp(
-      title: "FoodBuddy",
-      themeMode: ThemeMode.light,
-      theme: MyTheme.lightTheme(context),
-      darkTheme: MyTheme.darkTheme(context),
-      initialRoute: MyRoutes.homeRoute,
-      debugShowCheckedModeBanner: false,
-      routes: {
-        MyRoutes.homeRoute: (context) => homepage(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.homepage2Route: (context) => homepage2(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.cartRoute: (context) => CartPage(),
-        MyRoutes.orderhistoryRoute: (context) => Order_History(),
-        MyRoutes.notificationRoute: (context) => NotificationPage(),
-        MyRoutes.firstRoute: (context) => firstapp(),
-        MyRoutes.helloRoute: (context) => hello(),
-        MyRoutes.personalRoute: (context) => personal(),
-        MyRoutes.accountRoute: (context) => account1(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.verificationRoute: (context) => account2(),
-        MyRoutes.firstappRoute: (context) => firstapp(),
-        MyRoutes.userRoute: (context) => user(),
-        MyRoutes.addressRoute: (context) => address(),
-        MyRoutes.settingRoute: (context) => setting(),
-        MyRoutes.pchangeRoute: (context) => pchange(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.pverificationRoute: (context) => pverification(),
-        MyRoutes.psuccessRoute: (context) => psuccess(),
-        MyRoutes.paymentRoute: (context) => payment(),
-        MyRoutes.RecoveryRoute: (context) => Recovery(),
-        MyRoutes.recoveryverificationRoute: (context) => recoveryverification(),
-        MyRoutes.recoveryverificaion2Route: (context) =>
-            recoveryverification2(),
-        MyRoutes.newpassword1Route: (context) => newpassword1(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.newpassword2Route: (context) => newpassword2(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.newpsuccessRoute: (context) => newpsuccess(),
-        MyRoutes.newpsuccess2Route: (context) => newpsuccess2(),
-        MyRoutes.setnotificationRoute: (context) => setnotification(),
-        MyRoutes.newaddressRoute: (contex) => newaddress(),
-        MyRoutes.favouritesRoute: (context) => favourites(),
-        MyRoutes.sellect1Route: (context) => select1(),
-        MyRoutes.sellect2Route: (context) => select2(),
-        MyRoutes.create2Route: (context) => create2(
-              controller: TextEditingController(),
-            ),
-        MyRoutes.create3Route: (context) => create3(),
-        MyRoutes.confirmation2Route: (context) => confirmation2(),
-        MyRoutes.Recovery2Route: (context) => Recovery2(),
-        MyRoutes.popularRoute: (context) => popular(),
-        MyRoutes.offersRoute: (context) => offers(),
-        MyRoutes.categoriesRoute: (context) => categories(),
-        MyRoutes.restaurantsRoute: (context) => restaurants(),
-        MyRoutes.itemsRoute: (context) => items(),
-        MyRoutes.moodRoute: (context) => mood(),
-        MyRoutes.recommendRoute: (context) => recommend(),
-      },
-    );
-    return materialApp;
+    return KhaltiScope(
+        publicKey: "test_public_key_f5480c93cafd49f1a208abbfca5d8b05",
+        enabledDebugging: true,
+        builder: (context, navKey) {
+          return MaterialApp(
+            title: "FoodBuddy",
+            themeMode: ThemeMode.light,
+            theme: MyTheme.lightTheme(context),
+            darkTheme: MyTheme.darkTheme(context),
+            initialRoute: MyRoutes.homeRoute,
+            debugShowCheckedModeBanner: false,
+            routes: {
+              MyRoutes.homeRoute: (context) => homepage(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.homepage2Route: (context) => homepage2(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.cartRoute: (context) => CartPage(),
+              MyRoutes.orderhistoryRoute: (context) => Order_History(),
+              MyRoutes.notificationRoute: (context) => NotificationPage(),
+              MyRoutes.firstRoute: (context) => firstapp(),
+              MyRoutes.helloRoute: (context) => hello(),
+              MyRoutes.personalRoute: (context) => personal(),
+              MyRoutes.accountRoute: (context) => account1(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.verificationRoute: (context) => account2(),
+              MyRoutes.firstappRoute: (context) => firstapp(),
+              MyRoutes.userRoute: (context) => user(),
+              MyRoutes.addressRoute: (context) => address(),
+              MyRoutes.settingRoute: (context) => setting(),
+              MyRoutes.pchangeRoute: (context) => pchange(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.pverificationRoute: (context) => pverification(),
+              MyRoutes.psuccessRoute: (context) => psuccess(),
+              MyRoutes.paymentRoute: (context) => payment(),
+              MyRoutes.RecoveryRoute: (context) => Recovery(),
+              MyRoutes.recoveryverificationRoute: (context) =>
+                  recoveryverification(),
+              MyRoutes.recoveryverificaion2Route: (context) =>
+                  recoveryverification2(),
+              MyRoutes.newpassword1Route: (context) => newpassword1(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.newpassword2Route: (context) => newpassword2(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.newpsuccessRoute: (context) => newpsuccess(),
+              MyRoutes.newpsuccess2Route: (context) => newpsuccess2(),
+              MyRoutes.setnotificationRoute: (context) => setnotification(),
+              MyRoutes.newaddressRoute: (contex) => newaddress(),
+              MyRoutes.favouritesRoute: (context) => favourites(),
+              MyRoutes.sellect1Route: (context) => select1(),
+              MyRoutes.sellect2Route: (context) => select2(),
+              MyRoutes.create2Route: (context) => create2(
+                    controller: TextEditingController(),
+                  ),
+              MyRoutes.create3Route: (context) => create3(),
+              MyRoutes.confirmation2Route: (context) => confirmation2(),
+              MyRoutes.Recovery2Route: (context) => Recovery2(),
+              MyRoutes.popularRoute: (context) => popular(),
+              MyRoutes.offersRoute: (context) => offers(),
+              MyRoutes.categoriesRoute: (context) => categories(),
+              MyRoutes.restaurantsRoute: (context) => restaurants(),
+              MyRoutes.itemsRoute: (context) => items(),
+              MyRoutes.moodRoute: (context) => mood(),
+              MyRoutes.recommendRoute: (context) => recommend(),
+            },
+            navigatorKey: navKey,
+            localizationsDelegates: const [
+              KhaltiLocalizations.delegate,
+            ],
+          );
+        });
   }
 }

@@ -281,7 +281,7 @@ class __cartlistState extends State<_cartlist> {
                                       ),
                                     ),
                                     Text(
-                                      "2",
+                                      "1",
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,

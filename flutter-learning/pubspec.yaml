@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^6.1.0
   pinput: ^3.0.1
   velocity_x: ^4.1.2
+  khalti_flutter: ^3.0.0
    
 
 dev_dependencies:
