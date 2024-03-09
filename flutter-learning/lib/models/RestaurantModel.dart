@@ -7,7 +7,7 @@ class RestaurantModel {
   late FoodModel _food;
 
   // Collection of IDs - store Ids of each item
-  final List<int> _itemIds = [];
+  final List<int> itemIds = [];
 
   // Get Catalog
   FoodModel get food => _food;
@@ -17,7 +17,7 @@ class RestaurantModel {
   }
 
   // Get items in the cart
-  List<Foods>? get items => _itemIds.map((id) => _food.getById(id)).toList();
+  List<Foods>? get items => itemIds.map((id) => _food.getById(id)).toList();
 }
 
 class AddMutation extends VxMutation<MyStore> {
@@ -26,7 +26,7 @@ class AddMutation extends VxMutation<MyStore> {
   AddMutation(this.item);
   @override
   perform() {
-    store!.restaurant._itemIds.add(item.id - 1);
+    store!.restaurant.itemIds.add(item.id - 1);
   }
 }
 
@@ -36,6 +36,6 @@ class RemoveMutation extends VxMutation<MyStore> {
   RemoveMutation(this.item);
   @override
   perform() {
-    store!.restaurant._itemIds.remove(item.id - 1);
+    store!.restaurant.itemIds.remove(item.id - 1);
   }
 }

@@ -39,6 +39,9 @@ dependencies:
   pinput: ^3.0.1
   velocity_x: ^4.1.2
   khalti_flutter: ^3.0.0
+   #Firebase
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
    
 
 dev_dependencies:
@@ -51,7 +54,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  google_sign_in: ^5.4.2
+  google_sign_in: ^6.2.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

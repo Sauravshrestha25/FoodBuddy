@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_0/core/store.dart';
+import 'package:flutter_application_0/firebase_options%20(1).dart';
 import 'package:flutter_application_0/pages/Order_History.dart';
 import 'package:flutter_application_0/pages/Password.dart';
 import 'package:flutter_application_0/pages/Password2.dart';
@@ -46,9 +48,21 @@ import 'package:flutter_application_0/widgets/themes.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-void main() {
-  // runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(VxState(store: MyStore(), child: MyApp()));
+}
+
+class AuthenticationRepository {}
+
+class App {
+  const App();
+}
+
+class Get {
+  static put(authenticationRepository) {}
 }
 
 class MyApp extends StatelessWidget {
