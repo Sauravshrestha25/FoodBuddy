@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_0/core/store.dart';
-import 'package:flutter_application_0/models/restaurantModel.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_application_0/models/food.dart';
 
 class head extends StatefulWidget {
-  const head({super.key});
+  const head({super.key, required this.item});
+  final Foods item;
 
   @override
   State<head> createState() => headState();
@@ -14,9 +13,9 @@ class head extends StatefulWidget {
 class headState extends State<head> {
   @override
   Widget build(BuildContext context) {
-    final RestaurantModel _restaurant = (VxState.store as MyStore).restaurant;
+    var item;
     return ListView.builder(
-        itemCount: _restaurant.items?.length,
+        itemCount: 1,
         itemBuilder: (context, index) => Column(
               children: [
                 Container(
@@ -32,7 +31,7 @@ class headState extends State<head> {
                         Column(
                           children: [
                             Text(
-                              _restaurant.items![index].restaurant,
+                              item.restaurant,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
@@ -46,7 +45,7 @@ class headState extends State<head> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    _restaurant.items![index].city,
+                                    item.city,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 12,
@@ -62,7 +61,7 @@ class headState extends State<head> {
                                     ),
                                   ),
                                   Text(
-                                    _restaurant.items![index].address,
+                                    item.address,
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w100,

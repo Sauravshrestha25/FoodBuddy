@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_0/core/store.dart';
 import 'package:flutter_application_0/utils/routess.dart';
-
-import 'package:flutter_application_0/widgets/head.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_application_0/models/food.dart';
 import '../models/CartModel.dart';
 
 class items extends StatelessWidget {
   const items({super.key});
+
+  get index => 5;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,9 @@ class items extends StatelessWidget {
             child: Placeholder(
               color: Colors.transparent,
               fallbackHeight: 110,
-              child: _head(),
+              child: _head(
+                item: FoodModel.items[index],
+              ),
             ),
           ),
           Padding(
@@ -157,27 +159,6 @@ class _itemsbarState extends State<_itemsbar> {
   }
 }
 
-class _head extends StatelessWidget {
-  const _head({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 1,
-        itemBuilder: (context, index) => Column(
-              children: [
-                Placeholder(
-                  color: Colors.transparent,
-                  fallbackHeight: 220,
-                  child: head(),
-                )
-              ],
-            ));
-  }
-}
-
 class _items extends StatelessWidget {
   const _items({
     super.key,
@@ -192,15 +173,17 @@ class _items extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Container(
-                    height: 40,
+                    height: 50,
                     width: 200,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color(0xff181516)),
+                        color: Colors.transparent
+                        //  Color(0xff181516)
+                        ),
                     child: Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
-                        "Food Name",
+                        "",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -213,7 +196,7 @@ class _items extends StatelessWidget {
                 ),
                 Placeholder(
                   color: Colors.transparent,
-                  fallbackHeight: 220,
+                  fallbackHeight: 75,
                   child: _itemsname(item: FoodModel.items[index]),
                 )
               ],
@@ -324,6 +307,114 @@ class _itemsname extends StatelessWidget {
                       ]),
                 ),
               ),
+            ));
+  }
+}
+
+class _head extends StatelessWidget {
+  const _head({super.key, required this.item});
+  final Foods item;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: 1,
+        itemBuilder: (context, index) => Column(
+              children: [
+                Container(
+                  height: 110,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              item.restaurant,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                            Opacity(
+                              opacity: 0.8,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    item.city,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w100,
+                                        color: Colors.black),
+                                  ),
+                                  Text(
+                                    ",",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w100,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    item.address,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w100,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Icon(
+                                    CupertinoIcons.star,
+                                    size: 20,
+                                    color: Color(0xfffdb600),
+                                  ),
+                                ),
+                                Text(
+                                  "4.0",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            ),
+                            Opacity(
+                              opacity: 0.8,
+                              child: Text(
+                                "9:30 AM to 10:30 PM",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w100,
+                                    color: Colors.black),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ));
   }
 }

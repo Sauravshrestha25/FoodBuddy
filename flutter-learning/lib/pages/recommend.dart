@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_0/models/food.dart';
 import 'package:flutter_application_0/utils/routess.dart';
 
 class recommend extends StatelessWidget {
@@ -76,6 +77,7 @@ class _recommendbar extends StatelessWidget {
 class _recommend extends StatelessWidget {
   const _recommend({super.key});
 
+  get index => 5;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -85,9 +87,9 @@ class _recommend extends StatelessWidget {
           color: Colors.transparent,
         ),
         Padding(
-          padding: EdgeInsets.only(top: 50, bottom: 10, left: 60, right: 60),
+          padding: EdgeInsets.only(top: 50, bottom: 0, left: 60, right: 60),
           child: Text(
-            "The recommended food items for your mood (Happy) are:",
+            "The recommended food items for your mood ",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
@@ -96,10 +98,20 @@ class _recommend extends StatelessWidget {
             ),
           ),
         ),
+        Text(
+          textAlign: TextAlign.center,
+          "Happy",
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         Placeholder(
           fallbackHeight: 150,
           color: Colors.transparent,
-          child: _items(),
+          child: _items(
+            item: FoodModel.items[index],
+          ),
         ),
         Padding(
           padding: EdgeInsets.only(top: 0, bottom: 25, left: 60, right: 60),
@@ -118,7 +130,9 @@ class _recommend extends StatelessWidget {
           child: Placeholder(
             fallbackHeight: 400,
             color: Colors.transparent,
-            child: _restaurant(),
+            child: _restaurant(
+              item: FoodModel.items[index],
+            ),
           ),
         )
       ],
@@ -127,16 +141,17 @@ class _recommend extends StatelessWidget {
 }
 
 class _items extends StatelessWidget {
-  const _items({super.key});
+  const _items({super.key, required this.item});
+  final Foods item;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 3,
+        itemCount: 1,
         itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.all(10),
               child: Text(
-                "Item Name",
+                item.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,
@@ -148,12 +163,13 @@ class _items extends StatelessWidget {
 }
 
 class _restaurant extends StatelessWidget {
-  const _restaurant({super.key});
+  const _restaurant({super.key, required this.item});
+  final Foods item;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 3,
+      itemCount: 1,
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(2.5),
         child: Column(
@@ -196,7 +212,7 @@ class _restaurant extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Restaurant Name",
+                            item.restaurant,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -208,7 +224,7 @@ class _restaurant extends StatelessWidget {
                               Opacity(
                                 opacity: 0.5,
                                 child: Text(
-                                  "City Name",
+                                  item.city,
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Colors.black,
@@ -228,7 +244,7 @@ class _restaurant extends StatelessWidget {
                               Opacity(
                                 opacity: 0.5,
                                 child: Text(
-                                  "Street Name",
+                                  item.address,
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Colors.black,

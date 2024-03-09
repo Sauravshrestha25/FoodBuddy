@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_0/core/store.dart';
-import 'package:flutter_application_0/firebase_options%20(1).dart';
+import 'package:flutter_application_0/firebase_options.dart';
+
 import 'package:flutter_application_0/pages/Order_History.dart';
 import 'package:flutter_application_0/pages/Password.dart';
 import 'package:flutter_application_0/pages/Password2.dart';
@@ -50,7 +51,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
 
   runApp(VxState(store: MyStore(), child: MyApp()));
 }
@@ -63,6 +65,8 @@ class App {
 
 class Get {
   static put(authenticationRepository) {}
+
+  static find() {}
 }
 
 class MyApp extends StatelessWidget {
